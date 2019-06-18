@@ -4,7 +4,7 @@ class ShoppingCartController < ApplicationController
   end
 
   def show_cart
-    @order_products = OrderProduct.where(user_id: current_user.id)
+    @order_products = OrderProduct.where(user_id: current_user.id, paid:nil)
     render "shopping_cart/show_cart"
   end
 end

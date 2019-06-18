@@ -2,7 +2,7 @@
 <p>Find me in app/views/shopping_cart/show_cart.html.erb</p>
 
 <% @order_products.each do |order_product| %>
-  <%= order_product.product.brand %> <%= order_product.product.model %>: $<%= order_product.product.price %>
+  <%= order_product.product.brand %> <%= order_product.product.model %>: $<%= order_product.product.price %><br>
 <% end %>
 
 <%= form_for :order, :url => {:controller => "orders", :action => "create"} do |person_form| %>
