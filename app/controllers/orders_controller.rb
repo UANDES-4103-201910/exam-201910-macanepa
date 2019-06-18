@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
 
-        order_products = OrderProduct.where(user_id: current_user.id, paid:true)
+        order_products = OrderProduct.where(user_id: current_user.id, paid:nil)
         order_products.each do |order_product|
           order_product.update(order_id: @order.id, paid:true)
           puts("YES YES \n\n\n\n\n\n\n\n\n\n")
