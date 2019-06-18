@@ -1,0 +1,5 @@
+<% brands = Product.where(product_type:"handset").pluck(:brand).uniq %>
+<p>YES YES said Tom Nook</p>
+<% brands.each do |brand| %>
+  <a href=<%= root_path %>?brand=<%=brand %>><%= brand %></a><br>
+<% end %>

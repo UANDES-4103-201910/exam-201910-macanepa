@@ -7,9 +7,65 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
   <body>
-    <%= yield %>
+    <nav id="navbar-app" class="navbar navbar-expand-lg bg-dark justify-content-between fixed-top">
+      <a data-turbolinks='false' class="navbar-brand text-light" href="<%= root_path %>">
+        <%#= image_tag("logos/AngryLushoImage.png", width: "46px", heigth: "46px", gravity: "Center", class: "rounded-circle") %>
+        <b>Z-Mobile</b>
+      </a>
+
+      <button class="btn btn-primary">Login Stuff</button>
+    </nav>
+
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container col-6 mx-auto mt-1">
+      <div class="mx-auto mt-1">
+        <a href=<%= root_path %>?product_type=handset class="btn btn-primary">Handsets</a>
+        <a href=<%= root_path %>?product_type=prepaid class="btn btn-primary ml-2">Prepay Options</a>
+        <a href=<%= root_path %>?product_type=subscription class="btn btn-primary ml-2">Subscriptions</a>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body">
+            <% if $current_type == "handset" %>
+              <%= render 'nav/nav_product' %>
+            <% elsif $current_type == "prepaid" %>
+              <h5>Prepaid Ads!</h5>
+            <% elsif $current_type == "subscription" %>
+              <h5>Subscriptions Ads!</h5>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 mx-auto">
+        <%= yield %>
+      </div>
+    </div>
+
+
+    <footer id="footer-app">
+      <nav class="navbar navbar-expand-lg bg-dark justify-content-end">
+        <div class="nav-item">
+          <div class="text-white">Number: +56 2 9453 9283</div>
+        </div>
+        <div class="nav-item">
+          <div class="text-white ml-3">Address: Camino los tulipanes 5460</div>
+        </div>
+      </nav>
+    </footer>
+
   </body>
 </html>

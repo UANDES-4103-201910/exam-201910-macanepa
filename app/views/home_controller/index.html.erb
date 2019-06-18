@@ -1,0 +1,4 @@
+<h5>Our Products</h5>
+<% @products.each do |product| %>
+  <a class="h5" href="<%=product_path(id:product.id) %>"><%= product.model %>: $<%= product.price %></a><br>
+<% end %>
