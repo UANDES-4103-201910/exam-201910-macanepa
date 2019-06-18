@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+
+
+
 <html>
   <head>
     <title>Exam2019</title>
@@ -11,13 +15,18 @@
   </head>
 
   <body>
-    <nav id="navbar-app" class="navbar navbar-expand-lg bg-dark justify-content-between fixed-top">
-      <a data-turbolinks='false' class="navbar-brand text-light" href="<%= root_path %>">
+    <nav id="navbar-app" class="navbar navbar-expand-lg bg-light justify-content-between fixed-top">
+      <a data-turbolinks='false' class="navbar-brand text-dark" href="<%= root_path %>">
         <%#= image_tag("logos/AngryLushoImage.png", width: "46px", heigth: "46px", gravity: "Center", class: "rounded-circle") %>
         <b>Z-Mobile</b>
       </a>
 
-      <button class="btn btn-primary">Login Stuff</button>
+<!--      <button class="btn btn-primary">Login Stuff</button>-->
+      <% if user_signed_in? %>
+        <%= render "sessions_views/logged_in" %>
+      <% else %>
+        <%= render "sessions_views/logged_out" %>
+      <% end %>
     </nav>
 
 
@@ -25,7 +34,17 @@
     <br>
     <br>
 
-    <div class="container col-6 mx-auto mt-1">
+
+    <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+
+
+  <div class="container col-6 mx-auto mt-1">
       <div class="mx-auto mt-1">
         <a href=<%= root_path %>?product_type=handset class="btn btn-primary">Handsets</a>
         <a href=<%= root_path %>?product_type=prepaid class="btn btn-primary ml-2">Prepay Options</a>
@@ -50,7 +69,6 @@
         </div>
       </div>
 
-      <div class="col-6 mx-auto">
         <%= yield %>
       </div>
     </div>
