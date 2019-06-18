@@ -1,5 +1,5 @@
 class OrderProduct < ApplicationRecord
-  belongs_to :order
+  belongs_to :order, optional: true
   belongs_to :product
 
   # has_one :billing_address, :class_name => "Address"

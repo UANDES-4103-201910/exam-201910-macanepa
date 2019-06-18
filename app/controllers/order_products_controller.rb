@@ -10,6 +10,7 @@ class OrderProductsController < ApplicationController
   # GET /order_products/1
   # GET /order_products/1.json
   def show
+    redirect_to shopping_cart_show_cart_path
   end
 
   # GET /order_products/new
@@ -69,6 +70,6 @@ class OrderProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_product_params
-      params.require(:order_product).permit(:order_id, :product_id)
+      params.require(:order_product).permit(:order_id, :product_id, :user_id)
     end
 end

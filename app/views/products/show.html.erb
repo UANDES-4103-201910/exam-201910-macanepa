@@ -35,5 +35,11 @@
   <%= @product.product_type %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+
+<% if user_signed_in? %>
+<%= form_for :order_product, :url => {:controller => "order_products", :action => "create"} do |person_form| %>
+  <%= person_form.text_field :product_id, value: @product.id, type:"hidden" %>
+  <%= person_form.text_field :user_id, value: current_user.id, type:"hidden" %>
+  <%= submit_tag "Add to cart" %>
+<% end %>
+<% end %>

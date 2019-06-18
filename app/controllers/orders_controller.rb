@@ -28,6 +28,14 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+
+        order_products = OrderProduct.where(user_id: current_user.id, paid:true)
+        order_products.each do |order_product|
+          order_product.update(order_id: @order.id, paid:true)
+          puts("YES YES \n\n\n\n\n\n\n\n\n\n")
+        end
+
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

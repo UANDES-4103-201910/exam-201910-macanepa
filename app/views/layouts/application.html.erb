@@ -23,6 +23,7 @@
 
 <!--      <button class="btn btn-primary">Login Stuff</button>-->
       <% if user_signed_in? %>
+        <%= current_user.id %>
         <%= render "sessions_views/logged_in" %>
       <% else %>
         <%= render "sessions_views/logged_out" %>
@@ -68,8 +69,9 @@
           </div>
         </div>
       </div>
-
-        <%= yield %>
+        <div class="col-6">
+          <%= yield %>
+        </div>
       </div>
     </div>
 

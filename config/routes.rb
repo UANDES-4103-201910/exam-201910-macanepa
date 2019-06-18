@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'shopping_cart/add_to_cart'
+  get 'shopping_cart/show_cart'
+  get 'shopping_carts_controller/add_to_cart'
+  get 'shopping_carts_controller/show_cart'
   devise_for :users
   get 'home_controller/index'
   resources :order_products
